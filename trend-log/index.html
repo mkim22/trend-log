@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TREND LOG · 27SS 여성복 트렌드 트래킹</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+:root{--ink:#16181D;--mut:#5B6270;--bor:#DDE0E6;--bg:#F4F5F7;--acc:#16181D;--blue:#2346D8;--warn:#B4530F;--ok:#1F7A4D}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;line-height:1.5}
+a{color:var(--blue)}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.gnb{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--bor)}
+.gnb .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.logo{font-weight:800;letter-spacing:.06em;font-size:18px;text-decoration:none;color:var(--ink)}
+.gnb nav{display:flex;gap:20px;flex:1;font-size:14px}
+.gnb nav a{color:#3F4552;text-decoration:none}
+.steps{display:flex;gap:6px}.steps .sm{display:none}.steps a{padding:7px 12px;border-radius:999px;border:1px solid var(--bor);font-size:13px;color:#3F4552;text-decoration:none;white-space:nowrap}.steps a.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:700}
+.kw .take{font-size:11px;color:var(--mut);display:block;text-align:center;margin-top:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:10px;padding:12px 18px;font-size:15px;font-weight:700;border:1px solid var(--ink);background:var(--ink);color:#fff;text-decoration:none}
+.btn.ghost{background:#fff;color:var(--ink);border-color:var(--bor)}
+.btn.sm{padding:8px 14px;font-size:14px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;border:1px solid var(--bor);background:#fff;font-size:14px;color:#3F4552;cursor:pointer;user-select:none}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.label{font-size:13px;font-weight:700;color:var(--mut);margin:0 0 10px}
+.card{background:#fff;border:1px solid var(--bor);border-radius:16px;padding:22px}
+.hint{font-size:13px;color:var(--mut)}
+.sample{font-size:12px;color:var(--warn);border:1px solid #F3C9A8;background:#FFF7F0;border-radius:8px;padding:4px 10px;white-space:nowrap}
+.view{display:none}.view.on{display:block}
+/* home */
+.hero{background:var(--bg);padding:56px 0 64px}
+.hero h1{font-size:40px;line-height:1.25;margin:10px 0 10px;font-weight:800}
+.eyebrow{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.04em}
+.search{margin-top:28px;display:grid;gap:22px}
+.search textarea{width:100%;border:2px solid var(--ink);border-radius:12px;padding:14px;font-size:16px;font-family:inherit;resize:vertical;min-height:58px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.err{display:none;color:#B42318;font-size:14px;font-weight:700}
+.err.on{display:block}
+section.sec{padding:64px 0;border-top:1px solid var(--bor)}
+section.sec h2{font-size:28px;margin:6px 0 24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+footer{background:var(--bg);border-top:1px solid var(--bor);padding:28px 0;font-size:13px;color:var(--mut)}
+/* result */
+.page{padding:28px 0 60px}
+.ptitle{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.ptitle h1{font-size:28px;margin:4px 0 0}
+.condbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--bg);border-radius:14px;padding:14px 16px;margin-bottom:20px}
+.condbar select{font-family:inherit;font-size:14px;padding:7px 10px;border-radius:8px;border:1px solid var(--bor);background:#fff}
+.attr h3{margin:0 0 4px;font-size:19px}
+.kw{border-top:1px solid var(--bor);padding:12px 0;display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start}
+.kw input{margin-top:5px;width:16px;height:16px}
+.kw .name{font-weight:700;font-size:16px}
+.kw .meta{font-size:12px;color:var(--mut);margin-top:2px}
+.kw .pct{font-weight:800;font-size:16px;text-align:right}
+.badge{display:inline-block;font-size:12px;border-radius:6px;padding:2px 8px;margin-top:6px;white-space:nowrap}
+.b-pre{background:#EEF1FB;color:#1E3A8A}
+.b-done{background:#ECF6F0;color:var(--ok)}
+.b-hold{border:1px dashed var(--warn);color:var(--warn)}
+.dots span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:3px;border:1px solid #B9BEC8}
+.dots span.f{background:var(--ink);border-color:var(--ink)}
+.spark{display:flex;align-items:flex-end;gap:2px;height:28px;margin-top:6px}
+.spark i{display:block;width:6px;background:var(--ink);opacity:.55;border-radius:1px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.ev{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:center;border-top:1px solid var(--bor);padding:12px 0;font-size:14px}
+.ev .ch{font-weight:700}
+.empty{padding:22px;border:1px dashed var(--bor);border-radius:12px;color:var(--mut);font-size:14px;text-align:center}
+.sticky{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--bor);padding:12px 0;margin-top:24px}
+.sticky .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.loading{padding:60px 0;text-align:center;color:var(--mut)}
+table.rep{width:100%;border-collapse:collapse;font-size:14px}
+table.rep th,table.rep td{border-top:1px solid var(--bor);padding:10px 8px;text-align:left;vertical-align:top}
+table.rep th{color:var(--mut);font-size:13px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;display:none}
+@media (max-width:820px){
+  .steps a{padding:6px 8px;font-size:12px}
+  .gnb .wrap{gap:10px}.logo{font-size:15px;white-space:nowrap}.steps{flex:1;justify-content:flex-end}.steps .lg{display:none}.steps .sm{display:inline}
+  .gnb nav{display:none}
+  .hero h1{font-size:30px}
+  .row2,.grid3,.grid2,.grid4{grid-template-columns:1fr}
+  .ev{grid-template-columns:1fr}
+  table.rep{display:block;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="gnb"><div class="wrap">
+  <a class="logo" href="#home">TREND LOG</a>
+  <nav><a href="#home" data-scroll="about">서비스 소개</a><a href="#home" data-scroll="features">주요 기능</a><a href="#home" data-scroll="channels">채널 안내</a></nav>
+  <div class="steps"><a href="#home" data-step="home"><span class="lg">1 조건 입력</span><span class="sm">1 조건</span></a><a href="#result" data-step="result"><span class="lg">2 트렌드 분석</span><span class="sm">2 분석</span></a><a href="#export" data-step="export"><span class="lg">3 저장 · 내보내기</span><span class="sm">3 저장</span></a></div>
+</div></header>
+
+<!-- 화면 1. 진입 · 메인 -->
+<main id="v-home" class="view">
+  <div class="hero"><div class="wrap">
+    <div class="eyebrow">27SS 여성복 · 실무자용 트렌드 트래킹</div>
+    <h1>4개 채널의 트렌드를<br>한 화면에서 비교하세요.</h1>
+    <p class="hint" style="font-size:16px;margin:0">무신사 · SSENSE · 후르츠패밀리 · 구글 트렌드에서 모은 표본을 실루엣 · 소재 · 컬러로 정리하고, 출처와 함께 보여줍니다.</p>
+
+    <div id="search" class="card search">
+      <div>
+        <div class="label">무엇을 조사할까요? (문장으로, 선택)</div>
+        <textarea id="q" placeholder="예: 27SS 페미닌 블라우스에서 요즘 뜨는 소재랑 컬러 보여줘"></textarea>
+        <div class="hint" style="margin-top:6px">문장 속 복종 · 품목 · 컨셉을 찾아 아래 선택에 자동으로 채워요.</div>
+      </div>
+      <div class="row2">
+        <div>
+          <div class="label">복종</div>
+          <div class="chips" id="c-cat"></div>
+          <div class="label" style="margin-top:16px">세부 품목</div>
+          <div class="chips" id="c-item"></div>
+        </div>
+        <div>
+          <div class="label">브랜드 컨셉</div>
+          <div class="chips" id="c-concept"></div>
+          <div class="label" style="margin-top:16px">채널</div>
+          <div class="chips" id="c-ch"></div>
+        </div>
+      </div>
+      <div class="err" id="err">복종 · 세부 품목 · 브랜드 컨셉을 각각 하나씩 골라 주세요.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn" id="go">트렌드 분석 시작 →</button>
+        <button class="btn ghost" id="fill">예시 조건 채우기</button>
+        <a href="#" id="reset" style="font-size:14px">조건 초기화</a>
+      </div>
+    </div>
+  </div></div>
+
+  <section class="sec" id="about"><div class="wrap">
+    <div class="eyebrow">문제와 해결</div>
+    <h2>3년 차 MD 한지우의 27SS 시장 조사</h2>
+    <div class="grid2">
+      <div class="card" style="background:var(--bg)"><div class="label">AS-IS · 지금</div>
+        <div style="font-size:18px;font-weight:800;margin-bottom:10px">채널을 하나씩 돌며 손으로 정리</div>
+        <ul style="margin:0;padding-left:18px;line-height:1.9;color:#3F4552"><li>채널마다 따로 접속해 랭킹 · 검색 확인</li><li>상품을 엑셀에 옮겨 소재 · 실루엣별로 손으로 분류</li><li>상품명이 제각각이라 비교가 어렵고 근거가 흩어짐</li></ul></div>
+      <div class="card" style="border-color:var(--ink)"><div class="label">TO-BE · TREND LOG</div>
+        <div style="font-size:18px;font-weight:800;margin-bottom:10px">조건만 고르면 4개 채널을 한 번에</div>
+        <ul style="margin:0;padding-left:18px;line-height:1.9;color:#3F4552"><li>복종 · 품목 · 컨셉을 고르고 바로 조회</li><li>실루엣 · 소재 · 컬러별 언급 건수와 비율</li><li>모든 항목에 출처 채널과 원본 링크</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="features" style="background:var(--bg)"><div class="wrap">
+    <div class="eyebrow">주요 기능</div>
+    <h2>이번 버전에서 하는 것 3가지</h2>
+    <div class="grid3">
+      <div class="card"><div class="num">1</div><h3 style="margin:12px 0 6px">조건 · 문장으로 트렌드 검색</h3><div class="hint">복종 · 세부 품목 · 브랜드 컨셉을 고르거나 문장으로 적으면 검색 조건으로 정리해요.</div></div>
+      <div class="card"><div class="num">2</div><h3 style="margin:12px 0 6px">4개 채널 데이터 통합 · 분류</h3><div class="hint">플랫폼마다 다른 상품명을 실루엣 · 소재 · 컬러 기준으로 묶어 비교해요.</div></div>
+      <div class="card"><div class="num">3</div><h3 style="margin:12px 0 6px">근거와 함께 저장 · 내보내기</h3><div class="hint">출처 링크와 표본 수를 담아 CSV · 텍스트로 내보내요.</div></div>
+    </div>
+    <div class="hint" style="margin-top:16px;padding:14px 16px;border:1px dashed var(--bor);border-radius:12px;background:#fff"><b style="color:var(--ink)">포함하지 않아요</b> · 로그인 · 결제 · 발주 · 전체 웹 실시간 크롤링 · 기획안 자동 작성</div>
+  </div></section>
+
+  <section class="sec" id="channels"><div class="wrap">
+    <div class="eyebrow">채널 안내</div>
+    <h2>4개 채널이 보여주는 신호</h2>
+    <div class="grid4" id="chcards"></div>
+    <p class="hint" style="margin-top:16px">'퍼지기 전 후보'는 해외 디자이너 → 검색 → 국내 판매 순으로 퍼진다는 가정에 따른 구분이에요. 판단은 실무자가 해요.</p>
+  </div></section>
+
+  <footer><div class="wrap">데이터 안내 · TREND LOG는 선정한 4개 채널에서 정해진 날짜에 모은 표본을 보여줍니다. 판매량 · 매출 확정치가 아니며, 시간 절감 목표는 아직 검증 전입니다.<br>2팀 검색어팀 · 성균관대 「인공지능과 패션 비즈니스」</div></footer>
+</main>
+
+<!-- 화면 2. 핵심 작업 · 분석 -->
+<main id="v-result" class="view"><div class="wrap page">
+  <div class="ptitle"><div><div class="eyebrow">STEP 2 · 트렌드 분석</div><h1 id="r-title">결과</h1><div class="hint" id="r-meta"></div></div><span class="sample" id="r-sample">예시 데이터</span></div>
+  <div class="condbar" id="condbar"></div>
+  <div id="r-body"></div>
+</div>
+<div class="sticky"><div class="wrap"><span class="hint" id="selcount">선택한 항목 0개 · 저장할 트렌드를 체크하세요</span><button class="btn" id="toexport">3 저장 · 내보내기 →</button></div></div>
+</main>
+
+<!-- 화면 3. 결과 · 상세 (저장 · 내보내기) -->
+<main id="v-export" class="view"><div class="wrap page">
+  <div class="ptitle"><div><div class="eyebrow">STEP 3 · 저장 · 내보내기</div><h1>담은 트렌드 리포트</h1><div class="hint" id="x-meta"></div></div><span class="sample">예시 데이터</span></div>
+  <div id="x-body"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+    <button class="btn" id="csv">CSV 다운로드</button>
+    <button class="btn ghost" id="copy">텍스트 · 마크다운 복사</button>
+    <a class="btn ghost" href="#result">← 분석 화면으로</a>
+  </div>
+  <p class="hint" style="margin-top:14px">트렌드 노출 빈도이며 판매량 순위나 성능 검증이 아니에요. 기획안은 자동으로 만들지 않아요.</p>
+</div></main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CAT={"아우터":["라이트자켓","데님자켓","가디건"],"상의":["반팔","블라우스","롱슬리브"],"하의":["스커트","쇼츠","팬츠"]};
+const CONCEPTS=["컨템","페미닌","스트리트","클래식","SPA"];
+const CHANNELS=["무신사","SSENSE","후르츠패밀리","구글 트렌드"];
+const ATTRS=["실루엣","소재","컬러"];
+const ALIAS={"스트릿":"스트리트","컨템포러리":"컨템","자켓":"라이트자켓","재킷":"라이트자켓","바람막이":"라이트자켓","데님 자켓":"데님자켓","청자켓":"데님자켓","티셔츠":"반팔","반팔티":"반팔","긴팔":"롱슬리브","치마":"스커트","반바지":"쇼츠","바지":"팬츠"};
+let DATA=null;
+const st={cat:null,item:null,concept:null,ch:new Set(CHANNELS),sel:new Set()};
+
+const $=s=>document.querySelector(s);
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function toast(m){const t=$("#toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",1800)}
+
+function chips(el,list,isOn,onClick){el.innerHTML="";list.forEach(v=>{const b=document.createElement("span");b.className="chip"+(isOn(v)?" on":"");b.textContent=v;b.onclick=()=>onClick(v);el.appendChild(b)})}
+function renderForm(){
+  chips($("#c-cat"),Object.keys(CAT),v=>st.cat===v,v=>{st.cat=v;if(!CAT[v].includes(st.item))st.item=null;renderForm()});
+  const items=st.cat?CAT[st.cat]:[].concat(...Object.values(CAT));
+  chips($("#c-item"),items,v=>st.item===v,v=>{st.item=v;st.cat=Object.keys(CAT).find(k=>CAT[k].includes(v));renderForm()});
+  chips($("#c-concept"),CONCEPTS,v=>st.concept===v,v=>{st.concept=v;renderForm()});
+  chips($("#c-ch"),CHANNELS,v=>st.ch.has(v),v=>{st.ch.has(v)?st.ch.delete(v):st.ch.add(v);if(!st.ch.size)st.ch.add(v);renderForm()});
+}
+function parseText(t){
+  if(!t)return;
+  Object.entries(ALIAS).forEach(([a,b])=>{if(t.includes(a))t+=" "+b});
+  for(const [c,its] of Object.entries(CAT)){if(t.includes(c))st.cat=c;for(const it of its)if(t.includes(it)){st.item=it;st.cat=c}}
+  for(const c of CONCEPTS)if(t.toUpperCase().includes(c.toUpperCase()))st.concept=c;
+}
+$("#q").addEventListener("input",e=>{parseText(e.target.value);renderForm()});
+$("#fill").onclick=()=>{$("#q").value="27SS 페미닌 블라우스에서 요즘 뜨는 소재랑 컬러 보여줘";st.cat=null;st.item=null;st.concept=null;parseText($("#q").value);renderForm();$("#err").classList.remove("on")};
+$("#reset").onclick=e=>{e.preventDefault();$("#q").value="";st.cat=st.item=st.concept=null;st.ch=new Set(CHANNELS);renderForm()};
+$("#go").onclick=()=>{if(!(st.cat&&st.item&&st.concept)){$("#err").classList.add("on");return}$("#err").classList.remove("on");st.sel.clear();location.hash="result"};
+
+function dots(found){return '<span class="dots" title="'+CHANNELS.join(" · ")+'">'+CHANNELS.map(c=>'<span class="'+(found.includes(c)?"f":"")+'"></span>').join("")+"</span>"}
+function badge(s){const c=s==="퍼지기 전 후보"?"b-pre":s==="이미 퍼진 흐름"?"b-done":"b-hold";return '<span class="badge '+c+'">'+esc(s)+"</span>"}
+function spark(a){const m=Math.max(...a,1);return '<div class="spark" title="구글 트렌드 관심도 (최근 12개월)">'+a.map(v=>'<i style="height:'+Math.max(2,Math.round(28*v/m))+'px"></i>').join("")+"</div>"}
+const SEARCH={"무신사":k=>"https://www.musinsa.com/search/goods?keyword="+encodeURIComponent(k),"SSENSE":k=>"https://www.ssense.com/ko-kr/women?q="+encodeURIComponent(k),"후르츠패밀리":k=>"https://fruitsfamily.com/search/"+encodeURIComponent(k)};
+function linkOf(e,kw,item){const real=e.url&&e.url!=="#"&&/^https?:/.test(e.url);if(real)return {href:e.url,label:"원본 열기 ↗"};const f=SEARCH[e.channel];return f?{href:f(kw+" "+(item||"")),label:e.channel+"에서 검색 ↗"}:{href:"",label:"링크 없음"}}
+function aTag(e,kw,item,text){const l=linkOf(e,kw,item);return l.href?'<a href="'+esc(l.href)+'" target="_blank" rel="noopener">'+esc(text||l.label)+"</a>":'<span class="hint">'+esc(text||l.label)+"</span>"}
+function keyOf(x){return [x.category,x.item_type,x.concept,x.attribute_type,x.keyword].join("|")}
+function current(){
+  return DATA.items.filter(x=>x.category===st.cat&&x.item_type===st.item&&x.concept===st.concept)
+    .map(x=>Object.assign({},x,{channels_found:x.channels_found.filter(c=>st.ch.has(c)),evidence:x.evidence.filter(e=>st.ch.has(e.channel))}))
+    .filter(x=>x.channels_found.length);
+}
+function renderCondbar(){
+  const opt=(list,v)=>list.map(o=>'<option'+(o===v?" selected":"")+">"+esc(o)+"</option>").join("");
+  $("#condbar").innerHTML='<b style="font-size:14px">조건</b>'+
+    '<select id="s-cat">'+opt(Object.keys(CAT),st.cat)+'</select>'+
+    '<select id="s-item">'+opt(CAT[st.cat],st.item)+'</select>'+
+    '<select id="s-concept">'+opt(CONCEPTS,st.concept)+'</select>'+
+    '<span class="hint">채널 '+st.ch.size+'개</span><button class="btn ghost sm" id="rerun">다시 조회</button><a href="#home" style="font-size:14px;margin-left:auto">조건 처음부터</a>';
+  $("#s-cat").onchange=e=>{st.cat=e.target.value;st.item=CAT[st.cat][0];renderCondbar()};
+  $("#rerun").onclick=()=>{st.item=$("#s-item").value;st.concept=$("#s-concept").value;st.sel.clear();renderResult()};
+}
+let evTab="전체";
+function renderResult(){
+  if(!DATA){$("#r-body").innerHTML='<div class="loading">4개 채널 데이터를 불러오는 중…</div>';return}
+  if(!(st.cat&&st.item&&st.concept)){$("#condbar").innerHTML="";$("#r-title").textContent="조건을 먼저 골라 주세요";$("#r-meta").textContent="";$("#r-body").innerHTML='<div class="empty" style="padding:40px">복종 · 세부 품목 · 브랜드 컨셉을 고른 뒤 분석을 시작하세요.<div style="margin-top:14px"><a class="btn sm" href="#home">1 조건 입력으로</a></div></div>';return}
+  const rows=current();
+  $("#r-title").textContent="27SS 여성 · "+st.item+" · "+st.concept;
+  $("#r-meta").textContent="수집일 "+DATA.meta.collected_at+" · 표본 기준: 채널별 상위 20개";
+  $("#r-sample").style.display=DATA.meta.is_sample?"":"none";
+  renderCondbar();
+  let html='<div class="grid3">';
+  for(const a of ATTRS){
+    const list=rows.filter(x=>x.attribute_type===a).sort((p,q)=>q.mention_count-p.mention_count);
+    html+='<div class="card attr"><h3>'+a+'</h3><div class="hint" style="margin-bottom:6px">언급 건수 / 유효 표본 · 채널(무신사 · SSENSE · 후르츠 · 구글)</div>';
+    if(!list.length)html+='<div class="empty">자료 없음<br><span style="font-size:12px">이 조건에 맞는 표본이 없어요. 조건을 넓혀 보세요.</span></div>';
+    for(const x of list){
+      const k=keyOf(x),pct=x.sample_count?(100*x.mention_count/x.sample_count).toFixed(1)+"%":"자료 없음";
+      html+='<label class="kw"><span><input type="checkbox" data-k="'+esc(k)+'"'+(st.sel.has(k)?" checked":"")+'><span class="take">담기</span></span><div><div class="name">'+esc(x.keyword)+'</div><div class="meta">'+x.mention_count+" / "+x.sample_count+"건 · "+dots(x.channels_found)+'</div>'+badge(x.status)+(x.needs_review||x.mention_count<5?' <span class="badge b-hold">검토 필요</span>':"")+spark(x.search_trend)+'</div><div class="pct">'+pct+"</div></label>";
+    }
+    html+="</div>";
+  }
+  html+="</div>";
+  const ev=[];rows.forEach(x=>x.evidence.forEach(e=>ev.push(Object.assign({kw:x.keyword,at:x.attribute_type},e))));
+  html+='<div class="card" style="margin-top:20px"><div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"><h3 style="margin:0 0 10px">채널별 근거 상품</h3><span class="hint">브랜드 · 상품명 · 원본 링크</span></div><div class="tabs" id="evtabs"></div><div id="evlist"></div></div>';
+  html+='<p class="hint" style="margin-top:14px">\'퍼지기 전 후보\'는 SSENSE · 후르츠패밀리에 보이지만 무신사 판매순에는 아직 없는 키워드예요. 가정에 따른 구분이며, 표본이 5건 미만이면 \'판단 보류\'로 표시해요.</p>';
+  $("#r-body").innerHTML=html;
+  document.querySelectorAll(".kw input").forEach(i=>i.onchange=()=>{i.checked?st.sel.add(i.dataset.k):st.sel.delete(i.dataset.k);updSel()});
+  const tabs=["전체",...CHANNELS.filter(c=>c!=="구글 트렌드"&&st.ch.has(c))];
+  if(!tabs.includes(evTab))evTab="전체";
+  let evMore=false;
+  const drawEv=()=>{
+    chips($("#evtabs"),tabs,v=>v===evTab,v=>{evTab=v;evMore=false;drawEv()});
+    const all=ev.filter(e=>evTab==="전체"||e.channel===evTab);
+    const l=evMore?all:all.slice(0,8);
+    $("#evlist").innerHTML=(l.length?l.map(e=>'<div class="ev"><div class="ch">'+esc(e.channel)+'</div><div><b>'+esc(e.brand)+'</b> · '+esc(e.product_name)+'<div class="hint">'+esc(e.at)+": "+esc(e.kw)+" · "+esc(e.price)+" · 수집일 "+esc(e.collected_at||DATA.meta.collected_at)+'</div></div>'+aTag(e,e.kw,st.item)+'</div>').join(""):'<div class="empty">자료 없음</div>')+(all.length>l.length?'<button class="btn ghost sm" id="evmore" style="margin-top:12px">근거 상품 '+(all.length-l.length)+'개 더 보기</button>':"");
+    const m=$("#evmore");if(m)m.onclick=()=>{evMore=true;drawEv()};
+  };
+  drawEv();updSel();
+}
+function updSel(){const n=st.sel.size;$("#selcount").textContent="담은 트렌드 "+n+"개"+(n?"":" · 카드의 '담기'를 체크하세요")}
+$("#toexport").onclick=()=>{location.hash="export"};
+
+function selected(){return DATA.items.filter(x=>st.sel.has(keyOf(x))).map(x=>Object.assign({},x,{channels_found:x.channels_found.filter(c=>st.ch.has(c)),evidence:x.evidence.filter(e=>st.ch.has(e.channel))}))}
+function renderExport(){
+  if(!DATA)return;
+  const s=selected();
+  if(!s.length){$("#x-meta").textContent=st.cat?"27SS 여성 · "+st.item+" · "+st.concept:"";
+    $("#x-body").innerHTML='<div class="empty" style="padding:40px">아직 담은 트렌드가 없어요.<br>2 트렌드 분석 화면에서 카드의 \'담기\'를 체크하면 여기에 모여요.<div style="margin-top:14px"><a class="btn sm" href="'+(st.cat?"#result":"#home")+'">'+(st.cat?"2 트렌드 분석으로":"1 조건 입력으로")+'</a></div></div>';
+    $("#csv").disabled=true;$("#copy").disabled=true;return}
+  $("#csv").disabled=false;$("#copy").disabled=false;
+  $("#x-meta").textContent="27SS 여성 · "+st.item+" · "+st.concept+" · 수집일 "+DATA.meta.collected_at+" · 비율 = 언급 건수 ÷ 유효 표본 수";
+  let h='<div class="card"><table class="rep"><thead><tr><th>속성</th><th>키워드</th><th>언급 / 표본</th><th>비율</th><th>구분</th><th>채널</th><th>근거</th></tr></thead><tbody>';
+  for(const x of s){
+    h+="<tr><td>"+esc(x.attribute_type)+"</td><td><b>"+esc(x.keyword)+"</b></td><td>"+x.mention_count+" / "+x.sample_count+"</td><td>"+(100*x.mention_count/x.sample_count).toFixed(1)+"%</td><td>"+badge(x.status)+"</td><td>"+esc(x.channels_found.join(", "))+"</td><td>"+
+      (x.evidence.length?x.evidence.map(e=>esc(e.channel)+" · "+esc(e.brand)+" · "+esc(e.product_name)+" · "+aTag(e,x.keyword,x.item_type)).join("<br>"):"자료 없음")+"</td></tr>";
+  }
+  $("#x-body").innerHTML=h+"</tbody></table></div>";
+}
+function csvCell(v){v=String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+$("#csv").onclick=()=>{
+  const rows=[["복종","세부품목","컨셉","속성","키워드","언급건수","유효표본","비율(%)","구분","채널","근거 브랜드","근거 상품명","근거 URL","수집일"]];
+  for(const x of selected()){const pct=(100*x.mention_count/x.sample_count).toFixed(1);
+    if(!x.evidence.length)rows.push([x.category,x.item_type,x.concept,x.attribute_type,x.keyword,x.mention_count,x.sample_count,pct,x.status,x.channels_found.join("/"),"","","",DATA.meta.collected_at]);
+    for(const e of x.evidence)rows.push([x.category,x.item_type,x.concept,x.attribute_type,x.keyword,x.mention_count,x.sample_count,pct,x.status,x.channels_found.join("/"),e.brand,e.product_name,linkOf(e,x.keyword,x.item_type).href,e.collected_at||DATA.meta.collected_at]);}
+  const blob=new Blob(["﻿"+rows.map(r=>r.map(csvCell).join(",")).join("\n")],{type:"text/csv"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="trendlog_"+st.item+"_"+st.concept+".csv";a.click();
+};
+$("#copy").onclick=async()=>{
+  let t="## TREND LOG · 27SS 여성 · "+st.item+" · "+st.concept+"\n수집일 "+DATA.meta.collected_at+"\n\n";
+  for(const x of selected())t+="- **"+x.attribute_type+" · "+x.keyword+"** — "+x.mention_count+"/"+x.sample_count+"건 ("+(100*x.mention_count/x.sample_count).toFixed(1)+"%), "+x.status+", 채널: "+x.channels_found.join(", ")+"\n";
+  try{await navigator.clipboard.writeText(t);toast("복사했어요")}catch(e){toast("복사하지 못했어요")}
+};
+
+function chCards(){
+  $("#chcards").innerHTML=DATA.meta.channels.map(c=>'<div class="card"><div style="font-size:17px;font-weight:800">'+esc(c.name)+'</div><div style="margin:6px 0;font-size:14px">'+esc(c.role)+'</div><div class="hint">'+esc(c.basis)+"</div></div>").join("");
+}
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  const v=["home","result","export"].includes(h)?h:"home";
+  document.querySelectorAll(".view").forEach(e=>e.classList.toggle("on",e.id==="v-"+v));
+  document.querySelectorAll("[data-step]").forEach(a=>a.classList.toggle("on",a.dataset.step===v));
+  if(v==="result")renderResult();
+  if(v==="export")renderExport();
+  if(v!=="home")window.scrollTo(0,0);
+}
+document.querySelectorAll("[data-scroll]").forEach(a=>a.addEventListener("click",e=>{const id=a.dataset.scroll;setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:"smooth"})},30)}));
+window.addEventListener("hashchange",route);
+renderForm();route();
+function parseCSV(t){const rows=[];let r=[],f="",q=false;t=t.replace(/^\ufeff/,"");
+  for(let i=0;i<t.length;i++){const c=t[i];
+    if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+    else if(c==='"')q=true;else if(c===","){r.push(f);f=""}else if(c==="\n"){r.push(f);rows.push(r);r=[];f=""}else if(c!=="\r")f+=c}
+  if(f||r.length){r.push(f);rows.push(r)}
+  const h=rows.shift();return rows.filter(x=>x.length>1).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]])))}
+function statusOf(found,n){const lead=found.includes("SSENSE")||found.includes("후르츠패밀리");if(n<5)return "판단 보류";if(lead&&found.includes("무신사"))return "이미 퍼진 흐름";if(lead)return "퍼지기 전 후보";return "판단 보류"}
+const EMBED={"data/meta.json": "{\n \"note\": \"화면 흐름 확인용 예시 데이터입니다. 실제 수집 데이터로 교체 예정.\",\n \"is_sample\": true,\n \"collected_at\": \"2026-11-23\",\n \"season\": \"27SS\",\n \"target\": \"여성\",\n \"channels\": [\n  {\n   \"name\": \"무신사\",\n   \"role\": \"국내에서 지금 팔리는 것\",\n   \"basis\": \"여성 · 복종별 판매순 상위 20개\"\n  },\n  {\n   \"name\": \"SSENSE\",\n   \"role\": \"해외 디자이너가 먼저 내놓는 것\",\n   \"basis\": \"여성 · 복종별 신상품 상위 20개\"\n  },\n  {\n   \"name\": \"후르츠패밀리\",\n   \"role\": \"중고 시장에서 다시 찾는 것\",\n   \"basis\": \"복종별 인기 상품 상위 20개\"\n  },\n  {\n   \"name\": \"구글 트렌드\",\n   \"role\": \"사람들이 찾아보는 흐름\",\n   \"basis\": \"키워드 최근 12개월 추이\"\n  }\n ]\n}", "data/trends.csv": "category,item_type,concept,attribute_type,keyword,mention_count,sample_count,channels_found\n아우터,라이트자켓,컨템,소재,새틴,8,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,컨템,소재,린넨,7,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,컨템,실루엣,와이드,16,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,컨템,실루엣,크롭,2,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,컨템,컬러,올리브,16,54,무신사|구글 트렌드\n아우터,라이트자켓,컨템,컬러,블랙,19,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,페미닌,소재,새틴,17,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,페미닌,소재,코튼,14,48,무신사|구글 트렌드\n아우터,라이트자켓,페미닌,실루엣,볼륨,21,48,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,페미닌,실루엣,슬림,3,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,페미닌,컬러,올리브,3,48,무신사|구글 트렌드\n아우터,라이트자켓,페미닌,컬러,화이트,12,48,무신사\n아우터,라이트자켓,스트리트,소재,니트,18,54,무신사|SSENSE|구글 트렌드\n아우터,라이트자켓,스트리트,소재,코튼,19,54,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,스트리트,실루엣,크롭,19,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,스트리트,실루엣,슬림,14,54,SSENSE|구글 트렌드\n아우터,라이트자켓,스트리트,컬러,실버,3,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,스트리트,컬러,올리브,3,54,무신사|SSENSE|후르츠패밀리\n아우터,라이트자켓,클래식,소재,코튼,18,48,무신사|SSENSE|후르츠패밀리\n아우터,라이트자켓,클래식,소재,데님,12,48,무신사|SSENSE|후르츠패밀리\n아우터,라이트자켓,클래식,실루엣,크롭,17,48,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,클래식,실루엣,A라인,9,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,클래식,컬러,올리브,9,48,무신사|SSENSE|구글 트렌드\n아우터,라이트자켓,클래식,컬러,버터 옐로,2,48,무신사|구글 트렌드\n아우터,라이트자켓,SPA,소재,린넨,20,54,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,SPA,소재,새틴,4,54,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,SPA,실루엣,볼륨,21,54,무신사\n아우터,라이트자켓,SPA,실루엣,드레이프,10,54,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,SPA,컬러,스카이 블루,22,54,무신사|후르츠패밀리|구글 트렌드\n아우터,라이트자켓,SPA,컬러,버터 옐로,2,54,무신사|후르츠패밀리\n아우터,데님자켓,컨템,소재,데님,18,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,컨템,소재,새틴,3,48,무신사|SSENSE\n아우터,데님자켓,컨템,실루엣,A라인,16,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,컨템,실루엣,와이드,9,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,컨템,컬러,버터 옐로,8,48,무신사|후르츠패밀리|구글 트렌드\n아우터,데님자켓,컨템,컬러,실버,20,48,SSENSE|후르츠패밀리\n아우터,데님자켓,페미닌,소재,시어(시스루),18,48,무신사|SSENSE|후르츠패밀리\n아우터,데님자켓,페미닌,소재,데님,22,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,페미닌,실루엣,A라인,15,48,후르츠패밀리\n아우터,데님자켓,페미닌,실루엣,슬림,4,48,후르츠패밀리|구글 트렌드\n아우터,데님자켓,페미닌,컬러,올리브,10,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,페미닌,컬러,베이지,8,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,스트리트,소재,린넨,16,36,무신사|후르츠패밀리|구글 트렌드\n아우터,데님자켓,스트리트,소재,데님,6,36,무신사|구글 트렌드\n아우터,데님자켓,스트리트,실루엣,오버핏,18,36,SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,스트리트,실루엣,슬림,19,36,후르츠패밀리|구글 트렌드\n아우터,데님자켓,스트리트,컬러,베이지,3,36,무신사|SSENSE|후르츠패밀리\n아우터,데님자켓,스트리트,컬러,블랙,7,36,무신사|후르츠패밀리|구글 트렌드\n아우터,데님자켓,클래식,소재,나일론,2,42,무신사|SSENSE\n아우터,데님자켓,클래식,소재,새틴,6,42,무신사|후르츠패밀리|구글 트렌드\n아우터,데님자켓,클래식,실루엣,크롭,18,42,SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,클래식,실루엣,와이드,17,42,무신사|구글 트렌드\n아우터,데님자켓,클래식,컬러,베이지,14,42,무신사|후르츠패밀리\n아우터,데님자켓,클래식,컬러,스카이 블루,8,42,SSENSE|후르츠패밀리|구글 트렌드\n아우터,데님자켓,SPA,소재,데님,6,54,무신사|구글 트렌드\n아우터,데님자켓,SPA,소재,시어(시스루),16,54,무신사|후르츠패밀리|구글 트렌드\n아우터,데님자켓,SPA,실루엣,볼륨,13,54,후르츠패밀리|구글 트렌드\n아우터,데님자켓,SPA,실루엣,슬림,4,54,무신사|구글 트렌드\n아우터,데님자켓,SPA,컬러,스카이 블루,7,54,무신사|후르츠패밀리\n아우터,데님자켓,SPA,컬러,실버,15,54,무신사|구글 트렌드\n아우터,가디건,컨템,소재,코튼,17,48,SSENSE|후르츠패밀리\n아우터,가디건,컨템,소재,니트,5,48,무신사|구글 트렌드\n아우터,가디건,컨템,실루엣,드레이프,3,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,가디건,컨템,실루엣,볼륨,5,48,무신사|후르츠패밀리|구글 트렌드\n아우터,가디건,컨템,컬러,올리브,19,48,무신사|후르츠패밀리|구글 트렌드\n아우터,가디건,컨템,컬러,화이트,16,48,무신사|SSENSE\n아우터,가디건,페미닌,소재,나일론,22,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,가디건,페미닌,소재,코튼,13,48,무신사|구글 트렌드\n아우터,가디건,페미닌,실루엣,볼륨,11,48,무신사|후르츠패밀리|구글 트렌드\n아우터,가디건,페미닌,실루엣,와이드,4,48,무신사|SSENSE|후르츠패밀리\n아우터,가디건,페미닌,컬러,블랙,12,48,무신사|구글 트렌드\n아우터,가디건,페미닌,컬러,실버,14,48,무신사|SSENSE\n아우터,가디건,스트리트,소재,나일론,8,36,무신사|구글 트렌드\n아우터,가디건,스트리트,소재,린넨,11,36,무신사|SSENSE\n아우터,가디건,스트리트,실루엣,볼륨,4,36,무신사|후르츠패밀리\n아우터,가디건,스트리트,실루엣,크롭,9,36,무신사|SSENSE|후르츠패밀리\n아우터,가디건,스트리트,컬러,블랙,17,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n아우터,가디건,스트리트,컬러,실버,22,36,무신사|SSENSE|구글 트렌드\n아우터,가디건,클래식,소재,데님,15,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,가디건,클래식,소재,린넨,14,48,SSENSE|구글 트렌드\n아우터,가디건,클래식,실루엣,크롭,7,48,SSENSE\n아우터,가디건,클래식,실루엣,와이드,7,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,가디건,클래식,컬러,화이트,8,48,SSENSE|후르츠패밀리|구글 트렌드\n아우터,가디건,클래식,컬러,베이지,2,48,무신사|SSENSE|후르츠패밀리\n아우터,가디건,SPA,소재,니트,19,42,무신사|구글 트렌드\n아우터,가디건,SPA,소재,시어(시스루),18,42,무신사|후르츠패밀리|구글 트렌드\n아우터,가디건,SPA,실루엣,볼륨,21,42,무신사|후르츠패밀리|구글 트렌드\n아우터,가디건,SPA,실루엣,오버핏,22,42,무신사|구글 트렌드\n아우터,가디건,SPA,컬러,베이지,18,42,무신사|구글 트렌드\n아우터,가디건,SPA,컬러,스카이 블루,14,42,무신사|구글 트렌드\n상의,반팔,컨템,소재,린넨,10,42,무신사|SSENSE\n상의,반팔,컨템,소재,니트,7,42,무신사|구글 트렌드\n상의,반팔,컨템,실루엣,드레이프,20,42,무신사|SSENSE\n상의,반팔,컨템,실루엣,오버핏,12,42,무신사|구글 트렌드\n상의,반팔,컨템,컬러,화이트,16,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,컨템,컬러,베이지,15,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,페미닌,소재,데님,19,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,페미닌,소재,니트,5,36,SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,페미닌,실루엣,A라인,16,36,후르츠패밀리|구글 트렌드\n상의,반팔,페미닌,실루엣,오버핏,22,36,무신사|후르츠패밀리\n상의,반팔,페미닌,컬러,스카이 블루,7,36,무신사|SSENSE|구글 트렌드\n상의,반팔,페미닌,컬러,올리브,6,36,무신사|후르츠패밀리|구글 트렌드\n상의,반팔,스트리트,소재,린넨,20,42,SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,스트리트,소재,코튼,20,42,무신사|후르츠패밀리\n상의,반팔,스트리트,실루엣,와이드,5,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,스트리트,실루엣,드레이프,14,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,스트리트,컬러,화이트,15,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,스트리트,컬러,버터 옐로,18,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,클래식,소재,코튼,18,42,SSENSE|구글 트렌드\n상의,반팔,클래식,소재,린넨,9,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,클래식,실루엣,와이드,3,42,후르츠패밀리\n상의,반팔,클래식,실루엣,크롭,11,42,무신사|후르츠패밀리|구글 트렌드\n상의,반팔,클래식,컬러,블랙,8,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,반팔,클래식,컬러,올리브,20,42,무신사|후르츠패밀리|구글 트렌드\n상의,반팔,SPA,소재,코튼,14,42,후르츠패밀리|구글 트렌드\n상의,반팔,SPA,소재,시어(시스루),19,42,후르츠패밀리\n상의,반팔,SPA,실루엣,오버핏,22,42,후르츠패밀리\n상의,반팔,SPA,실루엣,슬림,22,42,무신사|구글 트렌드\n상의,반팔,SPA,컬러,스카이 블루,6,42,무신사|구글 트렌드\n상의,반팔,SPA,컬러,베이지,6,42,후르츠패밀리|구글 트렌드\n상의,블라우스,컨템,소재,코튼,4,42,SSENSE|구글 트렌드\n상의,블라우스,컨템,소재,새틴,15,42,후르츠패밀리\n상의,블라우스,컨템,실루엣,크롭,9,42,무신사|SSENSE\n상의,블라우스,컨템,실루엣,오버핏,20,42,후르츠패밀리\n상의,블라우스,컨템,컬러,화이트,13,42,무신사|구글 트렌드\n상의,블라우스,컨템,컬러,스카이 블루,6,42,무신사|SSENSE\n상의,블라우스,페미닌,소재,나일론,15,36,무신사|SSENSE|후르츠패밀리\n상의,블라우스,페미닌,소재,시어(시스루),5,36,SSENSE|후르츠패밀리|구글 트렌드\n상의,블라우스,페미닌,실루엣,크롭,13,36,무신사|후르츠패밀리|구글 트렌드\n상의,블라우스,페미닌,실루엣,볼륨,10,36,무신사|후르츠패밀리\n상의,블라우스,페미닌,컬러,버터 옐로,19,36,무신사|SSENSE|구글 트렌드\n상의,블라우스,페미닌,컬러,스카이 블루,22,36,무신사|SSENSE|후르츠패밀리\n상의,블라우스,스트리트,소재,코튼,2,54,후르츠패밀리\n상의,블라우스,스트리트,소재,나일론,3,54,무신사|후르츠패밀리|구글 트렌드\n상의,블라우스,스트리트,실루엣,볼륨,19,54,무신사|후르츠패밀리|구글 트렌드\n상의,블라우스,스트리트,실루엣,크롭,14,54,SSENSE|후르츠패밀리\n상의,블라우스,스트리트,컬러,실버,18,54,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,블라우스,스트리트,컬러,베이지,11,54,무신사\n상의,블라우스,클래식,소재,나일론,20,36,무신사\n상의,블라우스,클래식,소재,린넨,7,36,후르츠패밀리\n상의,블라우스,클래식,실루엣,A라인,3,36,무신사|SSENSE|후르츠패밀리\n상의,블라우스,클래식,실루엣,크롭,7,36,무신사|SSENSE|후르츠패밀리\n상의,블라우스,클래식,컬러,실버,7,36,무신사|SSENSE|후르츠패밀리\n상의,블라우스,클래식,컬러,버터 옐로,11,36,무신사\n상의,블라우스,SPA,소재,데님,16,36,무신사\n상의,블라우스,SPA,소재,코튼,16,36,무신사|후르츠패밀리\n상의,블라우스,SPA,실루엣,오버핏,3,36,무신사|후르츠패밀리\n상의,블라우스,SPA,실루엣,와이드,4,36,무신사|구글 트렌드\n상의,블라우스,SPA,컬러,버터 옐로,8,36,무신사|구글 트렌드\n상의,블라우스,SPA,컬러,스카이 블루,8,36,무신사|구글 트렌드\n상의,롱슬리브,컨템,소재,니트,18,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,컨템,소재,시어(시스루),17,36,후르츠패밀리|구글 트렌드\n상의,롱슬리브,컨템,실루엣,크롭,14,36,무신사|후르츠패밀리|구글 트렌드\n상의,롱슬리브,컨템,실루엣,볼륨,19,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,컨템,컬러,화이트,4,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,컨템,컬러,버터 옐로,13,36,무신사|후르츠패밀리|구글 트렌드\n상의,롱슬리브,페미닌,소재,데님,19,36,SSENSE|구글 트렌드\n상의,롱슬리브,페미닌,소재,니트,14,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,페미닌,실루엣,와이드,12,36,무신사|후르츠패밀리\n상의,롱슬리브,페미닌,실루엣,볼륨,12,36,무신사|후르츠패밀리|구글 트렌드\n상의,롱슬리브,페미닌,컬러,스카이 블루,22,36,무신사|구글 트렌드\n상의,롱슬리브,페미닌,컬러,버터 옐로,5,36,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,스트리트,소재,니트,22,48,무신사|구글 트렌드\n상의,롱슬리브,스트리트,소재,코튼,6,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,스트리트,실루엣,오버핏,14,48,SSENSE|구글 트렌드\n상의,롱슬리브,스트리트,실루엣,볼륨,21,48,SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,스트리트,컬러,스카이 블루,21,48,무신사|후르츠패밀리\n상의,롱슬리브,스트리트,컬러,올리브,7,48,후르츠패밀리\n상의,롱슬리브,클래식,소재,새틴,20,48,SSENSE|후르츠패밀리\n상의,롱슬리브,클래식,소재,코튼,19,48,무신사|구글 트렌드\n상의,롱슬리브,클래식,실루엣,A라인,15,48,무신사|SSENSE|구글 트렌드\n상의,롱슬리브,클래식,실루엣,와이드,15,48,후르츠패밀리|구글 트렌드\n상의,롱슬리브,클래식,컬러,실버,12,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n상의,롱슬리브,클래식,컬러,베이지,11,48,SSENSE|구글 트렌드\n상의,롱슬리브,SPA,소재,나일론,19,42,무신사|구글 트렌드\n상의,롱슬리브,SPA,소재,린넨,17,42,무신사|구글 트렌드\n상의,롱슬리브,SPA,실루엣,와이드,15,42,무신사|후르츠패밀리\n상의,롱슬리브,SPA,실루엣,슬림,16,42,후르츠패밀리\n상의,롱슬리브,SPA,컬러,스카이 블루,5,42,무신사|구글 트렌드\n상의,롱슬리브,SPA,컬러,실버,5,42,무신사|후르츠패밀리|구글 트렌드\n하의,스커트,컨템,소재,린넨,14,36,SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,컨템,소재,데님,4,36,SSENSE|구글 트렌드\n하의,스커트,컨템,실루엣,슬림,3,36,무신사|SSENSE|후르츠패밀리\n하의,스커트,컨템,실루엣,볼륨,13,36,무신사|SSENSE|후르츠패밀리\n하의,스커트,컨템,컬러,베이지,22,36,SSENSE|후르츠패밀리\n하의,스커트,컨템,컬러,스카이 블루,21,36,무신사|SSENSE|구글 트렌드\n하의,스커트,페미닌,소재,나일론,16,48,무신사|구글 트렌드\n하의,스커트,페미닌,소재,니트,9,48,무신사|후르츠패밀리|구글 트렌드\n하의,스커트,페미닌,실루엣,드레이프,19,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,페미닌,실루엣,A라인,17,48,무신사|SSENSE|구글 트렌드\n하의,스커트,페미닌,컬러,버터 옐로,9,48,SSENSE|후르츠패밀리\n하의,스커트,페미닌,컬러,스카이 블루,8,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,스트리트,소재,니트,7,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,스트리트,소재,시어(시스루),17,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,스트리트,실루엣,드레이프,7,42,SSENSE|후르츠패밀리\n하의,스커트,스트리트,실루엣,와이드,20,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,스트리트,컬러,실버,13,42,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,스트리트,컬러,버터 옐로,16,42,SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,클래식,소재,데님,10,48,무신사|SSENSE|후르츠패밀리\n하의,스커트,클래식,소재,린넨,5,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,클래식,실루엣,크롭,22,48,SSENSE|구글 트렌드\n하의,스커트,클래식,실루엣,오버핏,14,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,스커트,클래식,컬러,버터 옐로,10,48,무신사|SSENSE|후르츠패밀리\n하의,스커트,클래식,컬러,베이지,12,48,무신사|후르츠패밀리|구글 트렌드\n하의,스커트,SPA,소재,린넨,3,42,무신사\n하의,스커트,SPA,소재,새틴,2,42,무신사\n하의,스커트,SPA,실루엣,볼륨,20,42,무신사|구글 트렌드\n하의,스커트,SPA,실루엣,슬림,4,42,무신사\n하의,스커트,SPA,컬러,베이지,7,42,무신사|후르츠패밀리\n하의,스커트,SPA,컬러,버터 옐로,12,42,무신사|후르츠패밀리\n하의,쇼츠,컨템,소재,데님,20,48,무신사|구글 트렌드\n하의,쇼츠,컨템,소재,니트,19,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,쇼츠,컨템,실루엣,오버핏,20,48,무신사|후르츠패밀리\n하의,쇼츠,컨템,실루엣,드레이프,15,48,무신사|SSENSE|후르츠패밀리\n하의,쇼츠,컨템,컬러,스카이 블루,8,48,무신사|후르츠패밀리|구글 트렌드\n하의,쇼츠,컨템,컬러,올리브,10,48,SSENSE|후르츠패밀리|구글 트렌드\n하의,쇼츠,페미닌,소재,새틴,7,48,후르츠패밀리\n하의,쇼츠,페미닌,소재,니트,16,48,무신사\n하의,쇼츠,페미닌,실루엣,오버핏,20,48,무신사|후르츠패밀리|구글 트렌드\n하의,쇼츠,페미닌,실루엣,와이드,16,48,무신사|후르츠패밀리|구글 트렌드\n하의,쇼츠,페미닌,컬러,버터 옐로,11,48,무신사|후르츠패밀리|구글 트렌드\n하의,쇼츠,페미닌,컬러,스카이 블루,20,48,무신사|SSENSE\n하의,쇼츠,스트리트,소재,니트,10,42,무신사|SSENSE\n하의,쇼츠,스트리트,소재,새틴,20,42,무신사|SSENSE\n하의,쇼츠,스트리트,실루엣,A라인,15,42,무신사|후르츠패밀리\n하의,쇼츠,스트리트,실루엣,슬림,18,42,무신사|SSENSE|구글 트렌드\n하의,쇼츠,스트리트,컬러,버터 옐로,15,42,무신사|구글 트렌드\n하의,쇼츠,스트리트,컬러,스카이 블루,5,42,무신사|후르츠패밀리|구글 트렌드\n하의,쇼츠,클래식,소재,데님,11,54,SSENSE|후르츠패밀리|구글 트렌드\n하의,쇼츠,클래식,소재,코튼,22,54,무신사|구글 트렌드\n하의,쇼츠,클래식,컬러,스카이 블루,20,54,무신사|SSENSE|구글 트렌드\n하의,쇼츠,클래식,컬러,올리브,19,54,무신사|SSENSE|후르츠패밀리\n하의,쇼츠,SPA,소재,새틴,15,36,무신사|후르츠패밀리|구글 트렌드\n하의,쇼츠,SPA,소재,데님,5,36,무신사|구글 트렌드\n하의,쇼츠,SPA,실루엣,슬림,22,36,후르츠패밀리|구글 트렌드\n하의,쇼츠,SPA,실루엣,오버핏,18,36,무신사\n하의,쇼츠,SPA,컬러,스카이 블루,13,36,무신사|구글 트렌드\n하의,쇼츠,SPA,컬러,실버,13,36,후르츠패밀리|구글 트렌드\n하의,팬츠,컨템,소재,린넨,10,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,컨템,소재,나일론,20,48,무신사|SSENSE|구글 트렌드\n하의,팬츠,컨템,실루엣,드레이프,9,48,무신사\n하의,팬츠,컨템,실루엣,크롭,13,48,무신사|SSENSE|후르츠패밀리\n하의,팬츠,컨템,컬러,올리브,13,48,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,컨템,컬러,베이지,8,48,SSENSE|구글 트렌드\n하의,팬츠,페미닌,소재,코튼,8,60,무신사\n하의,팬츠,페미닌,소재,시어(시스루),2,60,무신사|SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,페미닌,실루엣,와이드,20,60,SSENSE\n하의,팬츠,페미닌,실루엣,볼륨,5,60,후르츠패밀리|구글 트렌드\n하의,팬츠,페미닌,컬러,올리브,14,60,SSENSE|구글 트렌드\n하의,팬츠,페미닌,컬러,스카이 블루,13,60,SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,스트리트,소재,코튼,11,54,무신사|SSENSE\n하의,팬츠,스트리트,소재,새틴,18,54,SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,스트리트,실루엣,A라인,7,54,무신사|구글 트렌드\n하의,팬츠,스트리트,실루엣,와이드,20,54,SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,스트리트,컬러,실버,17,54,무신사|구글 트렌드\n하의,팬츠,스트리트,컬러,버터 옐로,19,54,무신사|후르츠패밀리\n하의,팬츠,클래식,소재,새틴,2,36,SSENSE|후르츠패밀리|구글 트렌드\n하의,팬츠,클래식,소재,시어(시스루),11,36,SSENSE|구글 트렌드\n하의,팬츠,클래식,실루엣,와이드,3,36,SSENSE|구글 트렌드\n하의,팬츠,클래식,실루엣,오버핏,4,36,후르츠패밀리\n하의,팬츠,클래식,컬러,버터 옐로,21,36,무신사|SSENSE|구글 트렌드\n하의,팬츠,클래식,컬러,베이지,18,36,무신사|후르츠패밀리|구글 트렌드\n하의,팬츠,SPA,소재,코튼,2,48,무신사\n하의,팬츠,SPA,소재,린넨,3,48,후르츠패밀리|구글 트렌드\n하의,팬츠,SPA,실루엣,A라인,5,48,무신사\n하의,팬츠,SPA,실루엣,오버핏,14,48,후르츠패밀리|구글 트렌드\n하의,팬츠,SPA,컬러,베이지,18,48,무신사|후르츠패밀리|구글 트렌드\n하의,팬츠,SPA,컬러,버터 옐로,3,48,무신사|후르츠패밀리|구글 트렌드\n", "data/evidence.csv": "item_type,concept,keyword,channel,brand,product_name,price,url\n라이트자켓,컨템,새틴,무신사,브랜드 C,새틴 라이트자켓,\"189,000원\",#\n라이트자켓,컨템,린넨,무신사,브랜드 A,린넨 라이트자켓,\"89,000원\",#\n라이트자켓,컨템,와이드,무신사,브랜드 G,와이드 라이트자켓,\"39,000원\",#\n라이트자켓,컨템,크롭,무신사,브랜드 B,크롭 라이트자켓,\"189,000원\",#\n라이트자켓,컨템,올리브,무신사,브랜드 A,올리브 라이트자켓,\"59,000원\",#\n라이트자켓,컨템,블랙,무신사,브랜드 D,블랙 라이트자켓,\"89,000원\",#\n라이트자켓,페미닌,새틴,무신사,브랜드 L,새틴 라이트자켓,\"189,000원\",#\n라이트자켓,페미닌,코튼,무신사,브랜드 K,코튼 라이트자켓,\"59,000원\",#\n라이트자켓,페미닌,볼륨,무신사,브랜드 C,볼륨 라이트자켓,\"129,000원\",#\n라이트자켓,페미닌,슬림,SSENSE,브랜드 G,슬림 라이트자켓,$320,#\n라이트자켓,페미닌,올리브,무신사,브랜드 K,올리브 라이트자켓,\"89,000원\",#\n라이트자켓,페미닌,화이트,무신사,브랜드 J,화이트 라이트자켓,\"129,000원\",#\n라이트자켓,스트리트,니트,무신사,브랜드 L,니트 라이트자켓,\"59,000원\",#\n라이트자켓,스트리트,코튼,무신사,브랜드 J,코튼 라이트자켓,\"59,000원\",#\n라이트자켓,스트리트,크롭,무신사,브랜드 H,크롭 라이트자켓,\"89,000원\",#\n라이트자켓,스트리트,슬림,SSENSE,브랜드 B,슬림 라이트자켓,$320,#\n라이트자켓,스트리트,실버,무신사,브랜드 F,실버 라이트자켓,\"89,000원\",#\n라이트자켓,스트리트,올리브,무신사,브랜드 H,올리브 라이트자켓,\"129,000원\",#\n라이트자켓,클래식,코튼,무신사,브랜드 E,코튼 라이트자켓,\"59,000원\",#\n라이트자켓,클래식,데님,무신사,브랜드 A,데님 라이트자켓,\"189,000원\",#\n라이트자켓,클래식,크롭,무신사,브랜드 E,크롭 라이트자켓,\"39,000원\",#\n라이트자켓,클래식,A라인,SSENSE,브랜드 F,A라인 라이트자켓,$480,#\n라이트자켓,클래식,올리브,무신사,브랜드 I,올리브 라이트자켓,\"59,000원\",#\n라이트자켓,클래식,버터 옐로,무신사,브랜드 G,버터 옐로 라이트자켓,\"59,000원\",#\n라이트자켓,SPA,린넨,무신사,브랜드 C,린넨 라이트자켓,\"39,000원\",#\n라이트자켓,SPA,새틴,무신사,브랜드 B,새틴 라이트자켓,\"129,000원\",#\n라이트자켓,SPA,볼륨,무신사,브랜드 A,볼륨 라이트자켓,\"59,000원\",#\n라이트자켓,SPA,드레이프,무신사,브랜드 A,드레이프 라이트자켓,\"189,000원\",#\n라이트자켓,SPA,스카이 블루,무신사,브랜드 F,스카이 블루 라이트자켓,\"39,000원\",#\n라이트자켓,SPA,버터 옐로,무신사,브랜드 E,버터 옐로 라이트자켓,\"129,000원\",#\n데님자켓,컨템,데님,무신사,브랜드 G,데님 데님자켓,\"39,000원\",#\n데님자켓,컨템,새틴,무신사,브랜드 D,새틴 데님자켓,\"59,000원\",#\n데님자켓,컨템,A라인,SSENSE,브랜드 I,A라인 데님자켓,$320,#\n데님자켓,컨템,와이드,무신사,브랜드 C,와이드 데님자켓,\"189,000원\",#\n데님자켓,컨템,버터 옐로,무신사,브랜드 D,버터 옐로 데님자켓,\"39,000원\",#\n데님자켓,컨템,실버,SSENSE,브랜드 G,실버 데님자켓,$320,#\n데님자켓,페미닌,시어(시스루),무신사,브랜드 H,시어(시스루) 데님자켓,\"89,000원\",#\n데님자켓,페미닌,데님,무신사,브랜드 D,데님 데님자켓,\"129,000원\",#\n데님자켓,페미닌,A라인,후르츠패밀리,브랜드 J,A라인 데님자켓,\"129,000원\",#\n데님자켓,페미닌,슬림,후르츠패밀리,브랜드 K,슬림 데님자켓,\"89,000원\",#\n데님자켓,페미닌,올리브,무신사,브랜드 C,올리브 데님자켓,\"39,000원\",#\n데님자켓,페미닌,베이지,무신사,브랜드 E,베이지 데님자켓,\"59,000원\",#\n데님자켓,스트리트,린넨,무신사,브랜드 F,린넨 데님자켓,\"189,000원\",#\n데님자켓,스트리트,데님,무신사,브랜드 D,데님 데님자켓,\"89,000원\",#\n데님자켓,스트리트,오버핏,SSENSE,브랜드 L,오버핏 데님자켓,$890,#\n데님자켓,스트리트,슬림,후르츠패밀리,브랜드 C,슬림 데님자켓,\"189,000원\",#\n데님자켓,스트리트,베이지,무신사,브랜드 B,베이지 데님자켓,\"189,000원\",#\n데님자켓,스트리트,블랙,무신사,브랜드 D,블랙 데님자켓,\"59,000원\",#\n데님자켓,클래식,나일론,무신사,브랜드 F,나일론 데님자켓,\"189,000원\",#\n데님자켓,클래식,새틴,무신사,브랜드 J,새틴 데님자켓,\"89,000원\",#\n데님자켓,클래식,크롭,SSENSE,브랜드 I,크롭 데님자켓,$320,#\n데님자켓,클래식,와이드,무신사,브랜드 F,와이드 데님자켓,\"39,000원\",#\n데님자켓,클래식,베이지,무신사,브랜드 K,베이지 데님자켓,\"189,000원\",#\n데님자켓,클래식,스카이 블루,SSENSE,브랜드 F,스카이 블루 데님자켓,$320,#\n데님자켓,SPA,데님,무신사,브랜드 B,데님 데님자켓,\"129,000원\",#\n데님자켓,SPA,시어(시스루),무신사,브랜드 A,시어(시스루) 데님자켓,\"129,000원\",#\n데님자켓,SPA,볼륨,후르츠패밀리,브랜드 E,볼륨 데님자켓,\"59,000원\",#\n데님자켓,SPA,슬림,무신사,브랜드 K,슬림 데님자켓,\"189,000원\",#\n데님자켓,SPA,스카이 블루,무신사,브랜드 L,스카이 블루 데님자켓,\"59,000원\",#\n데님자켓,SPA,실버,무신사,브랜드 L,실버 데님자켓,\"89,000원\",#\n가디건,컨템,코튼,SSENSE,브랜드 G,코튼 가디건,$640,#\n가디건,컨템,니트,무신사,브랜드 F,니트 가디건,\"89,000원\",#\n가디건,컨템,드레이프,무신사,브랜드 J,드레이프 가디건,\"89,000원\",#\n가디건,컨템,볼륨,무신사,브랜드 J,볼륨 가디건,\"89,000원\",#\n가디건,컨템,올리브,무신사,브랜드 A,올리브 가디건,\"59,000원\",#\n가디건,컨템,화이트,무신사,브랜드 I,화이트 가디건,\"89,000원\",#\n가디건,페미닌,나일론,SSENSE,브랜드 I,나일론 가디건,$640,#\n가디건,페미닌,코튼,무신사,브랜드 G,코튼 가디건,\"39,000원\",#\n가디건,페미닌,볼륨,무신사,브랜드 E,볼륨 가디건,\"39,000원\",#\n가디건,페미닌,와이드,무신사,브랜드 B,와이드 가디건,\"89,000원\",#\n가디건,페미닌,블랙,무신사,브랜드 I,블랙 가디건,\"89,000원\",#\n가디건,페미닌,실버,무신사,브랜드 E,실버 가디건,\"39,000원\",#\n가디건,스트리트,나일론,무신사,브랜드 A,나일론 가디건,\"189,000원\",#\n가디건,스트리트,린넨,무신사,브랜드 J,린넨 가디건,\"89,000원\",#\n가디건,스트리트,볼륨,무신사,브랜드 A,볼륨 가디건,\"89,000원\",#\n가디건,스트리트,크롭,무신사,브랜드 I,크롭 가디건,\"89,000원\",#\n가디건,스트리트,블랙,무신사,브랜드 E,블랙 가디건,\"129,000원\",#\n가디건,스트리트,실버,무신사,브랜드 G,실버 가디건,\"129,000원\",#\n가디건,클래식,데님,SSENSE,브랜드 D,데님 가디건,$890,#\n가디건,클래식,린넨,SSENSE,브랜드 J,린넨 가디건,$320,#\n가디건,클래식,크롭,SSENSE,브랜드 L,크롭 가디건,$640,#\n가디건,클래식,와이드,SSENSE,브랜드 B,와이드 가디건,$480,#\n가디건,클래식,화이트,SSENSE,브랜드 H,화이트 가디건,$480,#\n가디건,클래식,베이지,무신사,브랜드 F,베이지 가디건,\"129,000원\",#\n가디건,SPA,니트,무신사,브랜드 F,니트 가디건,\"89,000원\",#\n가디건,SPA,시어(시스루),무신사,브랜드 D,시어(시스루) 가디건,\"189,000원\",#\n가디건,SPA,볼륨,무신사,브랜드 F,볼륨 가디건,\"189,000원\",#\n가디건,SPA,오버핏,무신사,브랜드 C,오버핏 가디건,\"189,000원\",#\n가디건,SPA,베이지,무신사,브랜드 K,베이지 가디건,\"39,000원\",#\n가디건,SPA,스카이 블루,무신사,브랜드 C,스카이 블루 가디건,\"89,000원\",#\n반팔,컨템,린넨,무신사,브랜드 H,린넨 반팔,\"59,000원\",#\n반팔,컨템,니트,무신사,브랜드 A,니트 반팔,\"189,000원\",#\n반팔,컨템,드레이프,무신사,브랜드 H,드레이프 반팔,\"129,000원\",#\n반팔,컨템,오버핏,무신사,브랜드 K,오버핏 반팔,\"39,000원\",#\n반팔,컨템,화이트,무신사,브랜드 H,화이트 반팔,\"59,000원\",#\n반팔,컨템,베이지,무신사,브랜드 I,베이지 반팔,\"89,000원\",#\n반팔,페미닌,데님,무신사,브랜드 K,데님 반팔,\"39,000원\",#\n반팔,페미닌,니트,SSENSE,브랜드 J,니트 반팔,$640,#\n반팔,페미닌,A라인,후르츠패밀리,브랜드 I,A라인 반팔,\"89,000원\",#\n반팔,페미닌,오버핏,무신사,브랜드 B,오버핏 반팔,\"129,000원\",#\n반팔,페미닌,스카이 블루,무신사,브랜드 F,스카이 블루 반팔,\"129,000원\",#\n반팔,페미닌,올리브,무신사,브랜드 H,올리브 반팔,\"59,000원\",#\n반팔,스트리트,린넨,SSENSE,브랜드 K,린넨 반팔,$640,#\n반팔,스트리트,코튼,무신사,브랜드 K,코튼 반팔,\"39,000원\",#\n반팔,스트리트,와이드,무신사,브랜드 F,와이드 반팔,\"89,000원\",#\n반팔,스트리트,드레이프,무신사,브랜드 L,드레이프 반팔,\"129,000원\",#\n반팔,스트리트,화이트,무신사,브랜드 I,화이트 반팔,\"129,000원\",#\n반팔,스트리트,버터 옐로,무신사,브랜드 J,버터 옐로 반팔,\"129,000원\",#\n반팔,클래식,코튼,SSENSE,브랜드 A,코튼 반팔,$480,#\n반팔,클래식,린넨,무신사,브랜드 I,린넨 반팔,\"89,000원\",#\n반팔,클래식,와이드,후르츠패밀리,브랜드 D,와이드 반팔,\"39,000원\",#\n반팔,클래식,크롭,무신사,브랜드 C,크롭 반팔,\"129,000원\",#\n반팔,클래식,블랙,무신사,브랜드 E,블랙 반팔,\"39,000원\",#\n반팔,클래식,올리브,무신사,브랜드 L,올리브 반팔,\"89,000원\",#\n반팔,SPA,코튼,후르츠패밀리,브랜드 F,코튼 반팔,\"39,000원\",#\n반팔,SPA,시어(시스루),후르츠패밀리,브랜드 E,시어(시스루) 반팔,\"59,000원\",#\n반팔,SPA,오버핏,후르츠패밀리,브랜드 I,오버핏 반팔,\"59,000원\",#\n반팔,SPA,슬림,무신사,브랜드 B,슬림 반팔,\"189,000원\",#\n반팔,SPA,스카이 블루,무신사,브랜드 H,스카이 블루 반팔,\"39,000원\",#\n반팔,SPA,베이지,후르츠패밀리,브랜드 E,베이지 반팔,\"129,000원\",#\n블라우스,컨템,코튼,SSENSE,브랜드 J,코튼 블라우스,$320,#\n블라우스,컨템,새틴,후르츠패밀리,브랜드 I,새틴 블라우스,\"129,000원\",#\n블라우스,컨템,크롭,무신사,브랜드 D,크롭 블라우스,\"59,000원\",#\n블라우스,컨템,오버핏,후르츠패밀리,브랜드 F,오버핏 블라우스,\"189,000원\",#\n블라우스,컨템,화이트,무신사,브랜드 H,화이트 블라우스,\"59,000원\",#\n블라우스,컨템,스카이 블루,무신사,브랜드 A,스카이 블루 블라우스,\"39,000원\",#\n블라우스,페미닌,나일론,무신사,브랜드 A,나일론 블라우스,\"39,000원\",#\n블라우스,페미닌,시어(시스루),SSENSE,브랜드 C,시어(시스루) 블라우스,$640,#\n블라우스,페미닌,크롭,무신사,브랜드 K,크롭 블라우스,\"39,000원\",#\n블라우스,페미닌,볼륨,무신사,브랜드 F,볼륨 블라우스,\"89,000원\",#\n블라우스,페미닌,버터 옐로,무신사,브랜드 H,버터 옐로 블라우스,\"59,000원\",#\n블라우스,페미닌,스카이 블루,무신사,브랜드 C,스카이 블루 블라우스,\"189,000원\",#\n블라우스,스트리트,코튼,후르츠패밀리,브랜드 A,코튼 블라우스,\"89,000원\",#\n블라우스,스트리트,나일론,무신사,브랜드 J,나일론 블라우스,\"189,000원\",#\n블라우스,스트리트,볼륨,무신사,브랜드 F,볼륨 블라우스,\"89,000원\",#\n블라우스,스트리트,크롭,SSENSE,브랜드 E,크롭 블라우스,$890,#\n블라우스,스트리트,실버,무신사,브랜드 L,실버 블라우스,\"89,000원\",#\n블라우스,스트리트,베이지,무신사,브랜드 E,베이지 블라우스,\"59,000원\",#\n블라우스,클래식,나일론,무신사,브랜드 C,나일론 블라우스,\"129,000원\",#\n블라우스,클래식,린넨,후르츠패밀리,브랜드 G,린넨 블라우스,\"189,000원\",#\n블라우스,클래식,A라인,무신사,브랜드 H,A라인 블라우스,\"59,000원\",#\n블라우스,클래식,크롭,무신사,브랜드 G,크롭 블라우스,\"59,000원\",#\n블라우스,클래식,실버,무신사,브랜드 K,실버 블라우스,\"189,000원\",#\n블라우스,클래식,버터 옐로,무신사,브랜드 B,버터 옐로 블라우스,\"39,000원\",#\n블라우스,SPA,데님,무신사,브랜드 J,데님 블라우스,\"59,000원\",#\n블라우스,SPA,코튼,무신사,브랜드 K,코튼 블라우스,\"129,000원\",#\n블라우스,SPA,오버핏,무신사,브랜드 J,오버핏 블라우스,\"89,000원\",#\n블라우스,SPA,와이드,무신사,브랜드 L,와이드 블라우스,\"189,000원\",#\n블라우스,SPA,버터 옐로,무신사,브랜드 B,버터 옐로 블라우스,\"59,000원\",#\n블라우스,SPA,스카이 블루,무신사,브랜드 L,스카이 블루 블라우스,\"39,000원\",#\n롱슬리브,컨템,니트,무신사,브랜드 A,니트 롱슬리브,\"59,000원\",#\n롱슬리브,컨템,시어(시스루),후르츠패밀리,브랜드 J,시어(시스루) 롱슬리브,\"129,000원\",#\n롱슬리브,컨템,크롭,무신사,브랜드 I,크롭 롱슬리브,\"189,000원\",#\n롱슬리브,컨템,볼륨,무신사,브랜드 H,볼륨 롱슬리브,\"89,000원\",#\n롱슬리브,컨템,화이트,무신사,브랜드 H,화이트 롱슬리브,\"59,000원\",#\n롱슬리브,컨템,버터 옐로,무신사,브랜드 I,버터 옐로 롱슬리브,\"59,000원\",#\n롱슬리브,페미닌,데님,SSENSE,브랜드 I,데님 롱슬리브,$890,#\n롱슬리브,페미닌,니트,무신사,브랜드 K,니트 롱슬리브,\"39,000원\",#\n롱슬리브,페미닌,와이드,무신사,브랜드 B,와이드 롱슬리브,\"129,000원\",#\n롱슬리브,페미닌,볼륨,무신사,브랜드 B,볼륨 롱슬리브,\"59,000원\",#\n롱슬리브,페미닌,스카이 블루,무신사,브랜드 B,스카이 블루 롱슬리브,\"189,000원\",#\n롱슬리브,페미닌,버터 옐로,무신사,브랜드 L,버터 옐로 롱슬리브,\"129,000원\",#\n롱슬리브,스트리트,니트,무신사,브랜드 F,니트 롱슬리브,\"39,000원\",#\n롱슬리브,스트리트,코튼,무신사,브랜드 H,코튼 롱슬리브,\"39,000원\",#\n롱슬리브,스트리트,오버핏,SSENSE,브랜드 I,오버핏 롱슬리브,$890,#\n롱슬리브,스트리트,볼륨,SSENSE,브랜드 L,볼륨 롱슬리브,$890,#\n롱슬리브,스트리트,스카이 블루,무신사,브랜드 K,스카이 블루 롱슬리브,\"89,000원\",#\n롱슬리브,스트리트,올리브,후르츠패밀리,브랜드 C,올리브 롱슬리브,\"189,000원\",#\n롱슬리브,클래식,새틴,SSENSE,브랜드 L,새틴 롱슬리브,$320,#\n롱슬리브,클래식,코튼,무신사,브랜드 C,코튼 롱슬리브,\"189,000원\",#\n롱슬리브,클래식,A라인,무신사,브랜드 J,A라인 롱슬리브,\"59,000원\",#\n롱슬리브,클래식,와이드,후르츠패밀리,브랜드 I,와이드 롱슬리브,\"189,000원\",#\n롱슬리브,클래식,실버,무신사,브랜드 I,실버 롱슬리브,\"59,000원\",#\n롱슬리브,클래식,베이지,SSENSE,브랜드 L,베이지 롱슬리브,$480,#\n롱슬리브,SPA,나일론,무신사,브랜드 C,나일론 롱슬리브,\"39,000원\",#\n롱슬리브,SPA,린넨,무신사,브랜드 C,린넨 롱슬리브,\"39,000원\",#\n롱슬리브,SPA,와이드,무신사,브랜드 C,와이드 롱슬리브,\"89,000원\",#\n롱슬리브,SPA,슬림,후르츠패밀리,브랜드 H,슬림 롱슬리브,\"39,000원\",#\n롱슬리브,SPA,스카이 블루,무신사,브랜드 G,스카이 블루 롱슬리브,\"39,000원\",#\n롱슬리브,SPA,실버,무신사,브랜드 I,실버 롱슬리브,\"89,000원\",#\n스커트,컨템,린넨,SSENSE,브랜드 E,린넨 스커트,$480,#\n스커트,컨템,데님,SSENSE,브랜드 C,데님 스커트,$480,#\n스커트,컨템,슬림,무신사,브랜드 K,슬림 스커트,\"189,000원\",#\n스커트,컨템,볼륨,무신사,브랜드 F,볼륨 스커트,\"89,000원\",#\n스커트,컨템,베이지,SSENSE,브랜드 C,베이지 스커트,$640,#\n스커트,컨템,스카이 블루,무신사,브랜드 I,스카이 블루 스커트,\"129,000원\",#\n스커트,페미닌,나일론,무신사,브랜드 A,나일론 스커트,\"59,000원\",#\n스커트,페미닌,니트,무신사,브랜드 H,니트 스커트,\"39,000원\",#\n스커트,페미닌,드레이프,무신사,브랜드 J,드레이프 스커트,\"39,000원\",#\n스커트,페미닌,A라인,무신사,브랜드 I,A라인 스커트,\"39,000원\",#\n스커트,페미닌,버터 옐로,SSENSE,브랜드 L,버터 옐로 스커트,$480,#\n스커트,페미닌,스카이 블루,무신사,브랜드 H,스카이 블루 스커트,\"89,000원\",#\n스커트,스트리트,니트,무신사,브랜드 K,니트 스커트,\"89,000원\",#\n스커트,스트리트,시어(시스루),무신사,브랜드 D,시어(시스루) 스커트,\"39,000원\",#\n스커트,스트리트,드레이프,SSENSE,브랜드 L,드레이프 스커트,$890,#\n스커트,스트리트,와이드,무신사,브랜드 F,와이드 스커트,\"59,000원\",#\n스커트,스트리트,실버,무신사,브랜드 K,실버 스커트,\"39,000원\",#\n스커트,스트리트,버터 옐로,SSENSE,브랜드 H,버터 옐로 스커트,$480,#\n스커트,클래식,데님,무신사,브랜드 E,데님 스커트,\"59,000원\",#\n스커트,클래식,린넨,무신사,브랜드 J,린넨 스커트,\"129,000원\",#\n스커트,클래식,크롭,SSENSE,브랜드 I,크롭 스커트,$890,#\n스커트,클래식,오버핏,무신사,브랜드 H,오버핏 스커트,\"59,000원\",#\n스커트,클래식,버터 옐로,무신사,브랜드 F,버터 옐로 스커트,\"189,000원\",#\n스커트,클래식,베이지,무신사,브랜드 D,베이지 스커트,\"89,000원\",#\n스커트,SPA,린넨,무신사,브랜드 L,린넨 스커트,\"129,000원\",#\n스커트,SPA,새틴,무신사,브랜드 D,새틴 스커트,\"129,000원\",#\n스커트,SPA,볼륨,무신사,브랜드 K,볼륨 스커트,\"89,000원\",#\n스커트,SPA,슬림,무신사,브랜드 G,슬림 스커트,\"129,000원\",#\n스커트,SPA,베이지,무신사,브랜드 D,베이지 스커트,\"129,000원\",#\n스커트,SPA,버터 옐로,무신사,브랜드 G,버터 옐로 스커트,\"39,000원\",#\n쇼츠,컨템,데님,무신사,브랜드 J,데님 쇼츠,\"59,000원\",#\n쇼츠,컨템,니트,무신사,브랜드 C,니트 쇼츠,\"129,000원\",#\n쇼츠,컨템,오버핏,무신사,브랜드 J,오버핏 쇼츠,\"59,000원\",#\n쇼츠,컨템,드레이프,무신사,브랜드 D,드레이프 쇼츠,\"59,000원\",#\n쇼츠,컨템,스카이 블루,무신사,브랜드 G,스카이 블루 쇼츠,\"59,000원\",#\n쇼츠,컨템,올리브,SSENSE,브랜드 G,올리브 쇼츠,$640,#\n쇼츠,페미닌,새틴,후르츠패밀리,브랜드 F,새틴 쇼츠,\"59,000원\",#\n쇼츠,페미닌,니트,무신사,브랜드 G,니트 쇼츠,\"189,000원\",#\n쇼츠,페미닌,오버핏,무신사,브랜드 E,오버핏 쇼츠,\"59,000원\",#\n쇼츠,페미닌,와이드,무신사,브랜드 A,와이드 쇼츠,\"189,000원\",#\n쇼츠,페미닌,버터 옐로,무신사,브랜드 J,버터 옐로 쇼츠,\"39,000원\",#\n쇼츠,페미닌,스카이 블루,무신사,브랜드 G,스카이 블루 쇼츠,\"189,000원\",#\n쇼츠,스트리트,니트,무신사,브랜드 H,니트 쇼츠,\"189,000원\",#\n쇼츠,스트리트,새틴,무신사,브랜드 K,새틴 쇼츠,\"39,000원\",#\n쇼츠,스트리트,A라인,무신사,브랜드 B,A라인 쇼츠,\"129,000원\",#\n쇼츠,스트리트,슬림,무신사,브랜드 A,슬림 쇼츠,\"59,000원\",#\n쇼츠,스트리트,버터 옐로,무신사,브랜드 A,버터 옐로 쇼츠,\"129,000원\",#\n쇼츠,스트리트,스카이 블루,무신사,브랜드 H,스카이 블루 쇼츠,\"39,000원\",#\n쇼츠,클래식,데님,SSENSE,브랜드 B,데님 쇼츠,$640,#\n쇼츠,클래식,코튼,무신사,브랜드 K,코튼 쇼츠,\"129,000원\",#\n쇼츠,클래식,스카이 블루,무신사,브랜드 F,스카이 블루 쇼츠,\"189,000원\",#\n쇼츠,클래식,올리브,무신사,브랜드 C,올리브 쇼츠,\"129,000원\",#\n쇼츠,SPA,새틴,무신사,브랜드 H,새틴 쇼츠,\"129,000원\",#\n쇼츠,SPA,데님,무신사,브랜드 G,데님 쇼츠,\"89,000원\",#\n쇼츠,SPA,슬림,후르츠패밀리,브랜드 B,슬림 쇼츠,\"39,000원\",#\n쇼츠,SPA,오버핏,무신사,브랜드 J,오버핏 쇼츠,\"39,000원\",#\n쇼츠,SPA,스카이 블루,무신사,브랜드 L,스카이 블루 쇼츠,\"89,000원\",#\n쇼츠,SPA,실버,후르츠패밀리,브랜드 L,실버 쇼츠,\"129,000원\",#\n팬츠,컨템,린넨,무신사,브랜드 L,린넨 팬츠,\"129,000원\",#\n팬츠,컨템,나일론,무신사,브랜드 F,나일론 팬츠,\"89,000원\",#\n팬츠,컨템,드레이프,무신사,브랜드 D,드레이프 팬츠,\"39,000원\",#\n팬츠,컨템,크롭,무신사,브랜드 G,크롭 팬츠,\"129,000원\",#\n팬츠,컨템,올리브,무신사,브랜드 J,올리브 팬츠,\"59,000원\",#\n팬츠,컨템,베이지,SSENSE,브랜드 I,베이지 팬츠,$480,#\n팬츠,페미닌,코튼,무신사,브랜드 C,코튼 팬츠,\"59,000원\",#\n팬츠,페미닌,시어(시스루),무신사,브랜드 K,시어(시스루) 팬츠,\"129,000원\",#\n팬츠,페미닌,와이드,SSENSE,브랜드 L,와이드 팬츠,$890,#\n팬츠,페미닌,볼륨,후르츠패밀리,브랜드 B,볼륨 팬츠,\"59,000원\",#\n팬츠,페미닌,올리브,SSENSE,브랜드 J,올리브 팬츠,$890,#\n팬츠,페미닌,스카이 블루,SSENSE,브랜드 E,스카이 블루 팬츠,$480,#\n팬츠,스트리트,코튼,무신사,브랜드 B,코튼 팬츠,\"59,000원\",#\n팬츠,스트리트,새틴,SSENSE,브랜드 K,새틴 팬츠,$640,#\n팬츠,스트리트,A라인,무신사,브랜드 A,A라인 팬츠,\"39,000원\",#\n팬츠,스트리트,와이드,SSENSE,브랜드 D,와이드 팬츠,$480,#\n팬츠,스트리트,실버,무신사,브랜드 C,실버 팬츠,\"89,000원\",#\n팬츠,스트리트,버터 옐로,무신사,브랜드 C,버터 옐로 팬츠,\"39,000원\",#\n팬츠,클래식,새틴,SSENSE,브랜드 F,새틴 팬츠,$480,#\n팬츠,클래식,시어(시스루),SSENSE,브랜드 C,시어(시스루) 팬츠,$480,#\n팬츠,클래식,와이드,SSENSE,브랜드 K,와이드 팬츠,$480,#\n팬츠,클래식,오버핏,후르츠패밀리,브랜드 D,오버핏 팬츠,\"39,000원\",#\n팬츠,클래식,버터 옐로,무신사,브랜드 H,버터 옐로 팬츠,\"129,000원\",#\n팬츠,클래식,베이지,무신사,브랜드 A,베이지 팬츠,\"59,000원\",#\n팬츠,SPA,코튼,무신사,브랜드 L,코튼 팬츠,\"39,000원\",#\n팬츠,SPA,린넨,후르츠패밀리,브랜드 C,린넨 팬츠,\"129,000원\",#\n팬츠,SPA,A라인,무신사,브랜드 H,A라인 팬츠,\"39,000원\",#\n팬츠,SPA,오버핏,후르츠패밀리,브랜드 E,오버핏 팬츠,\"59,000원\",#\n팬츠,SPA,베이지,무신사,브랜드 J,베이지 팬츠,\"89,000원\",#\n팬츠,SPA,버터 옐로,무신사,브랜드 D,버터 옐로 팬츠,\"89,000원\",#\n", "data/search_trends.csv": "keyword,monthly_interest\nA라인,37|45|39|45|44|41|58|56|42|48|74|40\n나일론,24|17|24|22|34|38|27|42|39|53|61|35\n니트,28|32|37|42|41|32|52|47|43|28|68|63\n데님,35|31|35|40|34|55|43|58|55|56|64|50\n드레이프,28|22|29|30|26|44|26|48|43|62|55|38\n린넨,31|28|34|31|32|35|56|55|33|37|61|39\n버터 옐로,48|48|50|49|49|50|73|71|52|57|79|47\n베이지,35|43|49|45|43|59|59|65|56|50|61|68\n볼륨,29|32|28|41|44|42|50|54|34|55|39|52\n블랙,32|23|32|37|34|25|48|28|27|47|30|47\n새틴,35|37|38|49|53|39|49|42|57|47|70|59\n스카이 블루,40|42|43|46|47|59|34|51|55|64|54|82\n슬림,28|25|30|34|35|26|37|26|34|59|35|58\n시어(시스루),32|35|37|35|43|42|59|55|57|30|48|68\n실버,22|28|36|23|33|36|51|33|52|53|53|52\n오버핏,44|42|42|54|59|59|50|66|79|54|61|46\n올리브,22|23|29|38|32|24|36|45|45|63|35|31\n와이드,15|27|19|27|30|34|16|32|35|53|53|47\n코튼,39|40|38|42|38|43|55|49|36|55|53|36\n크롭,32|37|37|38|35|32|57|51|53|74|51|44\n화이트,28|35|36|34|45|38|46|55|54|27|29|40\n"};
+const FILES=["data/meta.json","data/trends.csv","data/evidence.csv","data/search_trends.csv"];
+// data 폴더의 파일을 먼저 읽고, 못 읽으면(파일을 바로 열었거나 data 폴더가 없을 때) 이 파일 안의 예시 데이터를 씁니다.
+Promise.all(FILES.map(u=>fetch(u).then(r=>{if(!r.ok)throw 0;return r.text()}))).catch(()=>FILES.map(u=>EMBED[u]))
+.then(([m,t,e,g])=>{
+  const meta=JSON.parse(m),ev={},gt={};
+  parseCSV(g).forEach(x=>{gt[x.keyword]=x.monthly_interest.split("|").map(Number)});
+  parseCSV(e).forEach(x=>{const k=x.item_type+"|"+x.concept+"|"+x.keyword;(ev[k]=ev[k]||[]).push({channel:x.channel,brand:x.brand,product_name:x.product_name,price:x.price,url:x.url||"#",collected_at:x.collected_at||meta.collected_at})});
+  const items=parseCSV(t).map(x=>({category:x.category,item_type:x.item_type,concept:x.concept,attribute_type:x.attribute_type,keyword:x.keyword,
+    mention_count:+x.mention_count,sample_count:+x.sample_count,channels_found:x.channels_found?x.channels_found.split("|"):[],
+    search_trend:gt[x.keyword]||[],evidence:ev[x.item_type+"|"+x.concept+"|"+x.keyword]||[],needs_review:+x.mention_count<5})).map(x=>Object.assign(x,{status:statusOf(x.channels_found,x.mention_count)}));
+  DATA={meta,items};chCards();route()}).catch(err=>{const m='<div class="empty">데이터를 불러오지 못했어요. 페이지를 새로고침해 주세요.</div>';$("#chcards").innerHTML=m;$("#r-body").innerHTML=m;$("#x-body").innerHTML=m});
+</script>
+</body>
+</html>
